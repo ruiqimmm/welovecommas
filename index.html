@@ -23,6 +23,21 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            cursor: pointer;
+        }
+
+        #top:hover::after {
+            content: "Click for more";
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 3px;
+            font-size: 14px;
+            white-space: nowrap;
         }
 
         marquee {
@@ -35,6 +50,15 @@
             transform: translateY(-50%);
         }
 
+        marquee img {
+            width: 0.5em;
+            height: 0.55em;
+            vertical-align: baseline;
+            display: inline-block;
+            position: relative;
+            top: 0.15em;
+        }
+
         @media (max-width: 400px) {
             marquee {
                 font-size: 32px;
@@ -44,10 +68,13 @@
 </head>
 
 <body>
-    <div id="top">
-        <marquee behavior="scroll" direction="left" scrollamount="5" loop="infinite">
-            , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,
-            , , , , , , , , , , , , , , , , , , , , , , , , , , ,
+    <div id="top" onclick="window.location.href='index.html'">
+        <marquee behavior="scroll" direction="left" scrollamount="6" loop="infinite">
+            , , , , , ,<img src="./img/commablur.png" alt="Clickable Image" width="300" height="200">,
+            , , , , ,<img src="./img/commablur.png" alt="Clickable Image" width="300" height="200"> , , , , , , , , , ,
+            , , , , , , , , , , , , , , , , , , , , , , ,
+            , , , , , , , , , , <img src="./img/commablur.png" alt="Clickable Image" width="300" height="200">, , , , ,
+            , , , , , , , , , , , ,
         </marquee>
     </div>
 </body>
