@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title> </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolling Comma</title>
+    <link rel="icon" type="image/png" href="comma.png">
     <style>
-        <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">body,
+        body,
         html {
             margin: 0;
             padding: 0;
@@ -19,38 +22,31 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
+            position: relative;
         }
 
         marquee {
             width: 100%;
-            font-size: 100vw;
+            font-size: 50vw;
             white-space: nowrap;
-            list-height: 3;
+            line-height: 1;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
-        <link rel="icon" type="image/png" href="comma.png">marquee {
-            width: 100%;
-            white-space: nowrap;
-            font-size: 8vw;
-            /* 8% of the viewport width */
-        }
-
-        /* Ensure font size doesn't go below a certain threshold on small screens */
         @media (max-width: 400px) {
             marquee {
                 font-size: 32px;
-                /* Set a minimum font size for small screens */
             }
         }
-
-        <link rel="icon" type="image/x-icon" href="./img/comma.png">
     </style>
 </head>
 
 <body>
     <div id="top">
-        <marquee behavior="scroll" direction="left" scrollamount="5">
+        <marquee behavior="scroll" direction="left" scrollamount="5" loop="infinite">
+            , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,
             , , , , , , , , , , , , , , , , , , , , , , , , , , ,
         </marquee>
     </div>
