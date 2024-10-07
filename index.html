@@ -68,7 +68,8 @@
 </head>
 
 <body>
-    <div id="top" onclick="window.open('index.html', '_blank')">
+
+    <div id="top" onclick="openPage()">
         <marquee behavior="scroll" direction="left" scrollamount="6" loop="infinite">
             , , , , , ,<marquee behavior="scroll" direction="left" scrollamount="100" loop="infinite"><img
                     src="./img/commablur.png" alt="Clickable Image" width="300" height="200"><img
@@ -90,6 +91,12 @@
             , , , , , , , , , , , ,
         </marquee>
     </div>
+    <script>
+        function openPage() {
+            const url = 'index.html'; // You can modify this URL here
+            window.open(url, '_blank');
+        }
+    </script>
 </body>
 
 </html>
