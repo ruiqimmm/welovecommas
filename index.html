@@ -4,6 +4,7 @@
 <head>
     <title> </title>
     <style>
+        <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">body,
         html {
             margin: 0;
             padding: 0;
@@ -14,25 +15,40 @@
 
         #top {
             width: 100%;
-            height: 100vh;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
+
         }
 
         marquee {
             width: 100%;
-            font-size: 1000px;
+            font-size: 100vw;
             white-space: nowrap;
+            list-height: 3;
         }
 
-        <link rel="icon" type="image/png" href="comma.png">
+        <link rel="icon" type="image/png" href="comma.png">marquee {
+            width: 100%;
+            white-space: nowrap;
+            font-size: 8vw;
+            /* 8% of the viewport width */
+        }
+
+        /* Ensure font size doesn't go below a certain threshold on small screens */
+        @media (max-width: 400px) {
+            marquee {
+                font-size: 32px;
+                /* Set a minimum font size for small screens */
+            }
+        }
     </style>
 </head>
 
 <body>
     <div id="top">
-        <marquee behavior="scroll" direction="left" scrollamount="8">
+        <marquee behavior="scroll" direction="left" scrollamount="5">
             , , , , , , , , , , , , , , , , , , , , , , , , , , ,
         </marquee>
     </div>
