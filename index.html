@@ -64,10 +64,61 @@
                 font-size: 32px;
             }
         }
+
+        .fixed-top-right {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            font-size: 30px;
+        }
+
+        .fixed-top-right a {
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            transition: transform 0.5s ease, color 0.2s ease, background 0.2s ease;
+
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .fixed-top-right a:hover {
+            transform: scale(2);
+            color: white;
+
+        }
+
+        .fixed-top-right a::after {
+            content: attr(data-info);
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 16px;
+            background: #464646;
+            padding: 10px;
+            padding: 4px 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .fixed-top-right a:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
     </style>
 </head>
 
 <body>
+    <div class="fixed-top-right">
+        com
+        <a href="info.html" data-info="info">,</a>
+        <a href="publication.html" data-info="publication">,</a>
+        <a href="upcoming.html" data-info="upcoming">,</a>
+        as
+    </div>
 
     <div id="top" onclick="openPage()">
         <marquee behavior="scroll" direction="left" scrollamount="6" loop="infinite">

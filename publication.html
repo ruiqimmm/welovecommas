@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clickable Commas + Refresh</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #f8f8f8;
+            font-size: 24px;
+        }
+
+        img {
+            max-width: 200px;
+            height: auto;
+            cursor: help;
+            display: block;
+            margin-bottom: 20px;
+            pointer-events: auto;
+
+        }
+
+        img:hover {
+
+            cursor: help;
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <a target="_blank" onclick="playmusic()">
+            <img src="commascold.png" alt="Commas Logo">
+        </a>
+        under construction,,, come back soon!
+    </div>
+    <a href="index.html"> back
+    </a>
+
+    <script>
+        function playmusic() {
+            const audio = new Audio('awk.mp3');
+            audio.play();
+        }
+    </script>
+</body>
+
+</html>

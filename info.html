@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clickable Commas + Refresh</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            background: #f8f8f8;
+            font-size: 30px;
+        }
+
+        .clickable {
+            text-decoration: none;
+            color: #000;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            transition: transform 0.5s ease, color 0.2s ease, background 0.2s ease;
+            user-select: none;
+        }
+
+        .clickable:hover {
+            transform: scale(1.2);
+            color: #fff;
+            background: #464646;
+            padding: 4px 8px;
+        }
+
+        /* tooltip for commas */
+        .clickable[data-info]::after {
+            content: attr(data-info);
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            font-size: 14px;
+            padding: 4px 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease, transform 0.2s ease;
+        }
+
+        .clickable[data-info]:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-4px);
+        }
+
+        /* refresh button shouldn't show a tooltip */
+        .refresh::after {
+            content: none !important;
+        }
+
+        .refresh {
+            border: none;
+            background: transparent;
+            font: inherit;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Click → disappears + plays sound -->
+    <a class="clickable" data-info="com,,,as" onclick="playClick(); this.remove()">,</a>
+    <a class="clickable" data-info="is" onclick="playClick(); this.remove()">,</a>
+    <a class="clickable" data-info="..." onclick="playClick(); this.remove()">,</a>
+    <a class="clickable" data-info="..." onclick="playClick(); this.remove()">,</a>
+
+    <!-- Stays forever; click → sound + reload -->
+    <button class="clickable refresh" type="button" aria-label="Refresh page"
+        onclick="playClick(); window.location.reload()">refresh</button>
+    <a href="index.html"> back
+    </a>
+
+    <script>
+        // Play click.mp3 sound
+        function playClick() {
+            const audio = new Audio('click.mp3'); // put click.mp3 in the same folder
+            audio.play();
+        }
+    </script>
+</body>
+
+</html>
