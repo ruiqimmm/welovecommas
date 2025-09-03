@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clickable Commas + Refresh</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #f8f8f8;
+            font-size: 24px;
+        }
+
+        a {
+            cursor: pointer;
+            text-decoration: underline;
+            color: black;
+        }
+
+        a:hover {
+            color: #464646;
+        }
+
+        img {
+            max-width: 200px;
+            height: auto;
+            cursor: help;
+            display: block;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <a target="_blank" onclick="playmusic()">
+            <img src="up.png" alt="Commas Logo">
+        </a>
+    </div>
+    <p>upcoming
+    <p>
+        <br>
+    <p>New York Art Book Fair 2025 @ MoMA ps1</p>
+
+    <a href="index.html">back</a>
+
+    <script>
+        function playmusic() {
+            const audio = new Audio('upcoming.mp3');
+            audio.play();
+        }
+    </script>
+</body>
+
+</html>
