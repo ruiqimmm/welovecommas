@@ -73,23 +73,32 @@
 
 <body>
 
-    <!-- Click → disappears + plays sound -->
+    <!-- Click → disappears + plays click.mp3 -->
     <a class="clickable" data-info="com,,,as" onclick="playClick(); this.remove()">,</a>
     <a class="clickable" data-info="is" onclick="playClick(); this.remove()">,</a>
     <a class="clickable" data-info="..." onclick="playClick(); this.remove()">,</a>
     <a class="clickable" data-info="..." onclick="playClick(); this.remove()">,</a>
 
-    <!-- Stays forever; click → sound + reload -->
+    <!-- Stays forever; click → plays refresh.mp3 + reload -->
     <button class="clickable refresh" type="button" aria-label="Refresh page"
-        onclick="playClick(); window.location.reload()">refresh</button>
-    <a href="index.html"> back
-    </a>
+        onclick="refreshWithSound()">refresh</button>
+
+    <a href="index.html"> back </a>
 
     <script>
-        // Play click.mp3 sound
+
         function playClick() {
-            const audio = new Audio('click.mp3'); // put click.mp3 in the same folder
+            const audio = new Audio('click.mp3');
             audio.play();
+        }
+
+
+        function refreshWithSound() {
+            const audio = new Audio('refresh.mp3');
+            audio.play();
+            setTimeout(() => {
+                window.location.reload();
+            }, 4000);
         }
     </script>
 </body>
