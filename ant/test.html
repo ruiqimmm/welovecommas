@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ant Demo – Fixed Camera with Footprints</title>
+  <link rel="stylesheet" href="ant.css">
+</head>
+
+<body>
+  <div id="world">
+    <canvas id="trailCanvas"></canvas>
+
+    <div id="ant">
+      <div class="ant-wrapper">
+        <svg id="antSvg" viewBox="0 0 300 150">
+          <g id="legGroup1">
+            <line x1="120" y1="50" x2="90" y2="0" stroke="black" stroke-width="12" />
+            <line x1="120" y1="90" x2="90" y2="150" stroke="black" stroke-width="12" />
+          </g>
+
+          <g id="legGroup2">
+            <line x1="160" y1="50" x2="180" y2="5" stroke="black" stroke-width="12" />
+            <line x1="160" y1="100" x2="180" y2="145" stroke="black" stroke-width="12" />
+          </g>
+
+          <g id="legGroup3">
+            <line x1="205" y1="55" x2="260" y2="0" stroke="black" stroke-width="12" />
+            <line x1="205" y1="90" x2="260" y2="150" stroke="black" stroke-width="12" />
+          </g>
+
+          <!-- Body segments -->
+          <ellipse cx="60" cy="75" rx="60" ry="35" fill="#5c5656" />
+          <ellipse cx="150" cy="75" rx="50" ry="33" fill="#5c5656" />
+          <ellipse cx="250" cy="75" rx="70" ry="40" fill="#5c5656" />
+
+          <!-- Eyes -->
+          <circle cx="35" cy="55" r="12" fill="#fff" stroke="#000" stroke-width="3" />
+          <circle cx="35" cy="55" r="8" fill="#000" />
+
+          <circle cx="65" cy="65" r="12" fill="#fff" stroke="#000" stroke-width="3" />
+          <circle cx="65" cy="65" r="8" fill="#000" />
+
+          <!-- Mouth -->
+          <line x1="25" y1="95" x2="40" y2="100" stroke="#ddd" stroke-width="6" stroke-linecap="round" />
+        </svg>
+
+      </div>
+    </div>
+
+
+    <div class="map-form" style="left:120px; top:90px;">
+      <form action="/action_page.php">
+        <label for="fname">name:</label>
+        <input type="text" id="fname" name="fname"><br>
+      </form>
+    </div>
+
+    <div class="map-form" style="left: 500px; top: 500px;">
+      <form action="/action_page.php">
+        <input type="checkbox" id="ringing"><label for="ringing">ringing</label>
+      </form>
+    </div>
+
+    <div class="map-form" style="left: 20px; top: 800px;">
+      <form action="/action_page.php">
+        <input type="checkbox" id="strain"><label for="strain">strain</label>
+      </form>
+    </div>
+
+    <div class="map-form" style="left: 1000px; top: 500px;">
+      <form action="/action_page.php">
+        <input type="checkbox" id="conversation1"><label for="conversation1">conversation</label>
+      </form>
+    </div>
+
+    <div class="map-form" style="left: 800px; top: 200px;">
+      <form action="/action_page.php">
+        <input type="checkbox" id="conversation2"><label for="conversation2">background</label>
+      </form>
+    </div>
+  </div>
+  <!-- speaker / earplugs -->
+  <div class="map-form" style="left: 100px; top: 100px;">
+    <form>
+      <label><input type="radio" name="speaker_earplugs" value="speaker"> speaker</label><br>
+      <label><input type="radio" name="speaker_earplugs" value="earplugs"> earplugs</label>
+    </form>
+  </div>
+
+  <!-- loss / protect -->
+  <div class="map-form" style="left: 300px; top: 180px;">
+    <form>
+      <label><input type="radio" name="loss_protect" value="loss"> loss</label><br>
+      <label><input type="radio" name="loss_protect" value="protect"> protect</label>
+    </form>
+  </div>
+
+  <!-- left / right -->
+  <div class="map-form" style="left: 500px; top: 260px;">
+    <form>
+      <label><input type="radio" name="left_right" value="left"> left</label><br>
+      <label><input type="radio" name="left_right" value="right"> right</label>
+    </form>
+  </div>
+
+  <!-- normal / pain -->
+  <div class="map-form" style="left: 700px; top: 120px;">
+    <form>
+      <label><input type="radio" name="normal_pain" value="normal"> normal</label><br>
+      <label><input type="radio" name="normal_pain" value="pain"> pain</label>
+    </form>
+  </div>
+
+
+  <div class="map-form" style="left: 900px; top: 220px;">
+    <form>
+      <label><input type="radio" name="radio_background" value="radio on"> radio on</label><br>
+      <label><input type="radio" name="radio_background" value="background"> background</label>
+    </form>
+  </div>
+
+  <div id="minimap">
+    <canvas id="minimapCanvas" width="200" height="200"></canvas>
+  </div>
+
+  <div class="map-form" style="left: 200px; top: 400px;">
+    <form>
+      <label><input type="checkbox" id="ringing"> ringing</label>
+    </form>
+  </div>
+
+  <div class="map-form" style="left: 420px; top: 430px;">
+    <form>
+      <label><input type="checkbox" id="strain"> strain</label>
+    </form>
+  </div>
+
+  <div class="map-form" style="left: 650px; top: 410px;">
+    <form>
+      <label><input type="checkbox" id="conversation"> conversation</label>
+    </form>
+  </div>
+
+  <!-- explosive sources -->
+  <div class="map-form" style="left: 150px; top: 550px;">
+    <form>
+      <label><input type="checkbox" id="explosiveSources"> explosive sources</label>
+    </form>
+  </div>
+
+  <!-- job -->
+  <div class="map-form" style="left: 420px; top: 560px;">
+    <form>
+      <label><input type="checkbox" id="job"> job</label>
+    </form>
+  </div>
+
+  <!-- manufacture labels -->
+  <div class="map-form" style="left: 720px; top: 540px;">
+    <form>
+      <label><input type="checkbox" id="labels"> manufacture labels</label>
+    </form>
+  </div>
+
+  <!-- peak -->
+  <div class="map-form" style="left: 950px; top: 380px;">
+    <form>
+      <label><input type="checkbox" id="peak"> peak</label>
+    </form>
+  </div>
+
+  <!-- limit -->
+  <div class="map-form" style="left: 1050px; top: 520px;">
+    <form>
+      <label><input type="checkbox" id="limit"> limit</label>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
