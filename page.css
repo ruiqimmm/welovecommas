@@ -20,31 +20,34 @@ p {
     top: 80px;
     right: 150px;
     z-index: 1000;
-    font-size: 1.4vw;
-
+    font-size: 30px;
 }
+
 
 .fixed-top-right a {
     text-decoration: none;
-    color: #d4d4d4;
-    transition: transform 0.5s ease, color 0.2s ease;
+    color: rgb(223, 223, 223);
+    transition: transform 0.5s ease, color 0.2s ease, background 0.2s ease;
+
     display: inline-block;
     margin: 10px;
 }
 
 .fixed-top-right a:hover {
     transform: scale(2);
-    color: #e3e1e1;
+    color: white;
+
 }
 
 .fixed-top-right a::after {
     content: attr(data-info);
     position: absolute;
-    top: 20px;
+    top: 40px;
     left: 50%;
     transform: translateX(-50%);
-    text-shadow: 0 0 8px #8e8e8e;
-    ;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
     padding: 4px 6px;
     white-space: nowrap;
     opacity: 0;
