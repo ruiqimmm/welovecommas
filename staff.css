@@ -4,7 +4,7 @@ body {
     padding-left: 15vw;
     padding-right: 20vw;
     font-family: Arial, sans-serif;
-    background: #b3b3be;
+    background: #3e3e63;
     color: #fff;
     font-size: 1.4vw;
 }
@@ -16,8 +16,8 @@ p {
 /* ===== Fixed Header ===== */
 .fixed-top-right {
     position: fixed;
-    top: 15px;
-    right: 15px;
+    top: 80px;
+    right: 150px;
     z-index: 1000;
     font-size: 1.4vw;
 

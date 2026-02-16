@@ -1,0 +1,147 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(172, 172, 178);
+}
+
+#top {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+#top:hover::after {
+    content: "Click for more";
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+marquee {
+    width: 100%;
+    font-size: 50vw;
+    white-space: nowrap;
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(0, 0, 0);
+}
+
+marquee img {
+    width: 0.5em;
+    height: 0.55em;
+    vertical-align: baseline;
+    display: inline-block;
+    position: relative;
+    top: 0.15em;
+}
+
+@media (max-width: 400px) {
+    marquee {
+        font-size: 32px;
+    }
+}
+
+.fixed-top-right {
+    position: fixed;
+    top: 80px;
+    right: 150px;
+    z-index: 1000;
+    font-size: 30px;
+}
+
+.fixed-top-right a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: transform 0.5s ease, color 0.2s ease, background 0.2s ease;
+
+    display: inline-block;
+    margin: 10px;
+}
+
+.fixed-top-right a:hover {
+    transform: scale(2);
+    color: white;
+
+}
+
+.fixed-top-right a::after {
+    content: attr(data-info);
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 16px;
+    background: #0c126a;
+    padding: 10px;
+    padding: 4px 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.fixed-top-right a:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.back-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    color: rgb(94, 44, 175);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 10);
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    font-size: 20px;
+}
+
+.back-btn:hover {
+    transform: translateX(-50%) scale(1.3);
+    color: white;
+    transition: 0.2s ease;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto 0;
+    padding: 40px 20px;
+}
+
+.h-scroll {
+    width: 100%;
+    height: 60vh;
+    /* 你想要的可视高度 */
+    overflow-x: auto;
+    /* 允许左右滚动 */
+    overflow-y: hidden;
+    border: 3px solid #000;
+    background: #111;
+    white-space: nowrap;
+}
+
+.h-scroll img {
+    height: 100%;
+    width: auto;
+    /* 保持比例，宽度可能很长 */
+    display: inline-block;
+}

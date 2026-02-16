@@ -57,6 +57,134 @@
             audio.play();
         }
     </script>
+
+    <!doctype html>
+    <html lang="zh">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Table Grid</title>
+        <style>
+            table.grid {
+                width: 980px;
+                /* 你想要的总宽度 */
+                border-collapse: collapse;
+                /* 让边框像截图那样“连成一体” */
+                table-layout: fixed;
+                /* 固定列宽，避免内容把列撑爆 */
+                background: #dff6df;
+                /* 淡绿色底 */
+                font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans CJK SC", sans-serif;
+            }
+
+            table.grid td {
+                border: 2px solid #2f7a2f;
+                /* 绿色边框 */
+                vertical-align: top;
+                padding: 0;
+            }
+
+            /* 上半格：图片区 */
+            .cell-media {
+                background: #0a7a17;
+                /* 深绿 */
+                height: 210px;
+                /* 控制图片区高度 */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+            .cell-media img {
+                max-width: 100%;
+                max-height: 100%;
+                display: block;
+            }
+
+            /* 下半格：文字区 */
+            .cell-body {
+                padding: 12px;
+                line-height: 1.7;
+                font-size: 16px;
+                min-height: 320px;
+                /* 控制文字区高度（可删） */
+            }
+
+            .title {
+                font-weight: 700;
+                margin-bottom: 8px;
+            }
+
+            .price {
+                color: #0b5;
+                font-weight: 700;
+                margin-left: 8px;
+            }
+
+            .buy {
+                margin-top: 12px;
+                display: inline-block;
+                padding: 8px 10px;
+                border: 1px solid #999;
+                background: #eef;
+                text-decoration: none;
+                color: #333;
+            }
+        </style>
+    </head>
+
+    <body>
+        <table class="grid">
+            <tr>
+                <td>
+                    <div class="cell-media">
+                        <img src="https://via.placeholder.com/260x180" alt="">
+                    </div>
+                </td>
+                <td>
+                    <div class="cell-media">
+                        <img src="https://via.placeholder.com/260x180" alt="">
+                    </div>
+                </td>
+                <td>
+                    <div class="cell-media">
+                        <img src="https://via.placeholder.com/260x180" alt="">
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="cell-body">
+                        <div class="title">「B.E.A.M.COATINGII」 <span class="price">500円</span></div>
+                        <div>这里放商品说明文字……</div>
+                        <a class="buy" href="#">DLite.com ダウンロード購入</a>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="cell-body">
+                        <div class="title">「史上最強のフェチ2」 <span class="price">500円</span></div>
+                        <div>这里放商品说明文字……</div>
+                        <a class="buy" href="#">DLite.com ダウンロード購入</a>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="cell-body">
+                        <div class="title">「フルま！」 <span class="price">500円</span></div>
+                        <div>这里放商品说明文字……</div>
+                        <a class="buy" href="#">DLite.com ダウンロード購入</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </body>
+
+    </html>
+
 </body>
 
 </html>

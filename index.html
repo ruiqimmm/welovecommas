@@ -6,111 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>com,,,a</title>
     <link rel="icon" type="image/png" href="./img/lalala.png?v=2">
-    <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: rgb(66, 57, 113);
-        }
-
-        #top {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            cursor: pointer;
-        }
-
-        #top:hover::after {
-            content: "Click for more";
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #333;
-            color: #fff;
-            padding: 5px;
-            border-radius: 3px;
-            font-size: 14px;
-            white-space: nowrap;
-        }
-
-        marquee {
-            width: 100%;
-            font-size: 50vw;
-            white-space: nowrap;
-            line-height: 1;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: rgb(0, 0, 0);
-        }
-
-        marquee img {
-            width: 0.5em;
-            height: 0.55em;
-            vertical-align: baseline;
-            display: inline-block;
-            position: relative;
-            top: 0.15em;
-        }
-
-        @media (max-width: 400px) {
-            marquee {
-                font-size: 32px;
-            }
-        }
-
-        .fixed-top-right {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            z-index: 1000;
-            font-size: 30px;
-        }
-
-        .fixed-top-right a {
-            text-decoration: none;
-            color: rgb(0, 0, 0);
-            transition: transform 0.5s ease, color 0.2s ease, background 0.2s ease;
-
-            display: inline-block;
-            margin: 10px;
-        }
-
-        .fixed-top-right a:hover {
-            transform: scale(2);
-            color: white;
-
-        }
-
-        .fixed-top-right a::after {
-            content: attr(data-info);
-            position: absolute;
-            top: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 16px;
-            background: #0c126a;
-            padding: 10px;
-            padding: 4px 6px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .fixed-top-right a:hover::after {
-            opacity: 1;
-            transform: translateX(-50%) translateY(-5px);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -123,8 +19,8 @@
     </div>
 
     <div id="top" onclick="openPage()">
-        <marquee behavior="scroll" direction="left" scrollamount="6" loop="infinite">
-            , , , , , ,<marquee behavior="scroll" direction="left" scrollamount="100" loop="infinite"><img
+        <marquee behavior="scroll" direction="left" scrollamount="8" loop="infinite">
+            , , ,<marquee behavior="scroll" direction="left" scrollamount="80" loop="infinite"><img
                     src="./img/commablur.png" alt="Clickable Image" width="300" height="200"><img
                     src="./img/commablur.png" alt="Clickable Image" width="300" height="200"></marquee><img
                 src="./img/commablur.png" alt="Clickable Image" width="300" height="200">, , , , ,<marquee
