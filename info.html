@@ -25,8 +25,20 @@
 
     <a href="index.html" class="back-btn">back</a>
 
-    <div class="h-scroll">
-        <img src="./img/commablur.png" alt="scroll image">
+
+    <div class="gallery-wrapper">
+        <button class="nav prev" id="prev">‹</button>
+
+        <div class="h-scroll" id="gallery">
+            <img src="./imggallery/8ball.png" alt="8ball">
+            <img src="./imggallery/heart.png" alt="heart">
+            <img src="./imggallery/la.png" alt="la">
+            <img src="./imggallery/ny.png" alt="ny">
+            <img src="./imggallery/tokyo.png" alt="tokyo">
+            <img src="./imggallery/cdmx.png" alt="cdmx">
+        </div>
+
+        <button class="nav next" id="next">›</button>
     </div>
 
     <script>
@@ -43,6 +55,27 @@
                 window.location.reload();
             }, 4000);
         }
+    </script>
+
+    <script>
+        const gallery = document.getElementById('gallery');
+        const slides = gallery.querySelectorAll('img');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+
+        function getIndex() {
+            return Math.round(gallery.scrollLeft / gallery.clientWidth);
+        }
+
+        function scrollToIndex(i) {
+            gallery.scrollTo({
+                left: i * gallery.clientWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        prevBtn.onclick = () => scrollToIndex(getIndex() - 1);
+        nextBtn.onclick = () => scrollToIndex(getIndex() + 1);
     </script>
 </body>
 
