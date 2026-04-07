@@ -23,11 +23,20 @@
     <button class="clickable refresh" type="button" aria-label="Refresh page"
         onclick="refreshWithSound()">refresh</button>
 
+    <div class="flip-one-wrap">
+        <button class="nav prev" id="prev" type="button">‹</button>
 
-    <div class="gallery-wrapper">
-        <button class="nav prev" id="prev">‹</button>
+        <section class="flip-one" aria-label="Single page flip">
+            <div class="card" id="card" role="button" tabindex="0" aria-label="Flip page">
+                <div class="face front"><img id="imgFront" alt=""></div>
+                <div class="face back"><img id="imgBack" alt=""></div>
+            </div>
+        </section>
 
-        <div class="h-scroll" id="gallery">
+        <button class="nav next" id="next" type="button">›</button>
+
+        <!-- 你的图片数据源：保留但隐藏 -->
+        <div class="flip-source" id="gallery" aria-hidden="true">
             <img src="./imggallery/8ball.png" alt="8ball">
             <img src="./imggallery/heart.png" alt="heart">
             <img src="./imggallery/la.png" alt="la">
@@ -35,8 +44,6 @@
             <img src="./imggallery/tokyo.png" alt="tokyo">
             <img src="./imggallery/cdmx.png" alt="cdmx">
         </div>
-
-        <button class="nav next" id="next">›</button>
     </div>
 
     <a href="index.html" class="back-btn">back</a>
@@ -56,27 +63,106 @@
             }, 4000);
         }
     </script>
-
     <script>
-        const gallery = document.getElementById('gallery');
-        const slides = gallery.querySelectorAll('img');
-        const prevBtn = document.getElementById('prev');
-        const nextBtn = document.getElementById('next');
+        const source = document.getElementById("gallery");
+        const imgs = Array.from(source.querySelectorAll("img"));
 
-        function getIndex() {
-            return Math.round(gallery.scrollLeft / gallery.clientWidth);
+        const card = document.getElementById("card");
+        const imgFront = document.getElementById("imgFront");
+        const imgBack = document.getElementById("imgBack");
+
+        const prevBtn = document.getElementById("prev");
+        const nextBtn = document.getElementById("next");
+
+        // 当前显示的 index（front 面）
+        let index = 0;
+        let busy = false;
+
+        // 和 CSS transition 时间一致
+        const DURATION = 1800;
+
+        function mod(n, m) { return ((n % m) + m) % m; }
+
+        function setImg(imgEl, item) {
+            if (!item) { imgEl.removeAttribute("src"); imgEl.alt = ""; return; }
+            imgEl.src = item.src;
+            imgEl.alt = item.alt || "";
         }
 
-        function scrollToIndex(i) {
-            gallery.scrollTo({
-                left: i * gallery.clientWidth,
-                behavior: 'smooth'
-            });
+        function render() {
+            if (imgs.length === 0) return;
+            const frontItem = imgs[mod(index, imgs.length)];
+            const backItem = imgs[mod(index + 1, imgs.length)];
+            setImg(imgFront, frontItem);
+            setImg(imgBack, backItem);
         }
 
-        prevBtn.onclick = () => scrollToIndex(getIndex() - 1);
-        nextBtn.onclick = () => scrollToIndex(getIndex() + 1);
+        // 向前翻（next）：翻过去以后，立刻“无动画”复位，再换图
+        function goNext() {
+            if (busy || imgs.length === 0) return;
+            busy = true;
+
+            card.classList.add("is-flipped");
+
+            setTimeout(() => {
+                // 翻完：index 前进一张
+                index = mod(index + 1, imgs.length);
+
+                // 关键：去掉 transition 瞬间复位到正面
+                card.style.transition = "none";
+                card.classList.remove("is-flipped");
+
+                // 换新 front/back
+                render();
+
+                // 强制浏览器应用上面的 none
+                void card.offsetWidth;
+
+                // 恢复 transition
+                card.style.transition = "";
+                busy = false;
+            }, DURATION);
+        }
+
+        // 向后翻（prev）：做“反向翻”的感觉
+        // 方法：先把 index 往回一张并渲染，然后从“翻过的状态”回弹到正面
+        function goPrev() {
+            if (busy || imgs.length === 0) return;
+            busy = true;
+
+            // 先把 index 往回
+            index = mod(index - 1, imgs.length);
+            render();
+
+            // 先瞬间设置为 flipped（等于你现在在“翻过去”的那一面）
+            card.style.transition = "none";
+            card.classList.add("is-flipped");
+            void card.offsetWidth;
+
+            // 再开启动画回到正面（看起来像往回翻）
+            card.style.transition = "";
+            card.classList.remove("is-flipped");
+
+            setTimeout(() => {
+                busy = false;
+            }, DURATION);
+        }
+
+        // 点击翻下一页
+        card.addEventListener("click", goNext);
+        card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); goNext(); }
+        });
+
+        nextBtn.addEventListener("click", goNext);
+        prevBtn.addEventListener("click", goPrev);
+
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight") goNext();
+            if (e.key === "ArrowLeft") goPrev();
+        });
+
+        render();
     </script>
-</body>
 
 </html>
